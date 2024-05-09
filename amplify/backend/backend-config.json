@@ -1,0 +1,8 @@
+{
+  "storage": {
+    "ecoroute": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

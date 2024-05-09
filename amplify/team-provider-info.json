@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ecorouteplanner-dev-5a79e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::295325525181:role/amplify-ecorouteplanner-dev-5a79e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::295325525181:role/amplify-ecorouteplanner-dev-5a79e-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-ecorouteplanner-dev-5a79e-deployment",
+      "UnauthRoleName": "amplify-ecorouteplanner-dev-5a79e-unauthRole",
+      "StackName": "amplify-ecorouteplanner-dev-5a79e",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:295325525181:stack/amplify-ecorouteplanner-dev-5a79e/5b3717a0-0ddf-11ef-9a64-0a8c3af7500f",
+      "AmplifyAppId": "d2a1wbwo4mbk8g"
+    },
+    "categories": {
+      "storage": {
+        "ecoroute": {}
+      }
+    }
+  }
+}
