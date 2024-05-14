@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
 
 const googleapi = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -13,26 +13,37 @@ function useDirection(originRef, destiantionRef, transport) {
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
 
-  const calculateRoute = async () => {
+  const calculateRoute = useCallback(async () => {
+    if (!isLoaded) {
+      console.log("Google Maps API not loaded yet");
+      return;
+    }
     if (originRef === "" || destiantionRef === "") {
       return;
     }
     setDirectionsResponse(null);
-    const directionsService = new window.google.maps.DirectionsService();
-    const results = await directionsService.route({
-      origin: originRef,
-      destination: destiantionRef,
-      travelMode: transport,
-    });
-    setDirectionsResponse(results);
-    setDistance(results.routes[0].legs[0].distance.text);
-    setDuration(results.routes[0].legs[0].duration.text);
-  };
+    try {
+      const directionsService = new window.google.maps.DirectionsService();
+      const results = await directionsService.route({
+        origin: originRef,
+        destination: destiantionRef,
+        travelMode: transport,
+      });
+      console.log("요청");
+      setDirectionsResponse(results);
+      setDistance(results.routes[0].legs[0].distance.text);
+      setDuration(results.routes[0].legs[0].duration.text);
+    } catch (error) {
+      console.error("Failed to fetch directions:", error);
+    }
+  }, [originRef, destiantionRef, isLoaded, transport]);
 
   const clearRoute = () => {
     setDirectionsResponse(null);
     setDistance("");
     setDuration("");
+    originRef = "";
+    destiantionRef = "";
   };
 
   return {

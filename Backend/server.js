@@ -26,17 +26,27 @@ app.get("/", (req, res) => {
   res.send("Welcome to the API!");
 });
 
-app.post("/routes", async (req, res) => {
-  const { origin, destination, travelMode } = req.body;
-  console.log("server", origin, destination, travelMode);
+app.get("/getAllRoutes", async (req, res) => {
+  const { origin, destination } = req.query;
   try {
-    const response = await axios.get(
-      `https://maps.googleapis.com/maps/api/directions/json?origin=place_id:${origin}&destination=place_id:${destination}&mode=${travelMode}&key=${googleAPI}`
+    const driving = await axios.get(
+      `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=driving&key=${googleAPI}`
     );
-    console.log("요청");
-    res.json(response.data);
+    const walking = await axios.get(
+      `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=walking&key=${googleAPI}`
+    );
+    const biking = await axios.get(
+      `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=bicycling&key=${googleAPI}`
+    );
+
+    res.json({
+      driving: driving.data,
+      walking: walking.data,
+      biking: biking.data,
+    });
   } catch (error) {
-    console.error("Error fetching directions:", error);
+    console.error("Failed to fetch directions", error);
+    res.status(500).send("Failed to fetch directions");
   }
 });
 const port = 5000;

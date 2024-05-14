@@ -12,6 +12,7 @@
     "start:dev": "nodemon server.js"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.11.1",
     "@react-google-maps/api": "^2.19.3",
     "axios": "^1.6.8",
     "express": "^4.19.2",

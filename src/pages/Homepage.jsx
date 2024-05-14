@@ -27,9 +27,9 @@ const Homepage = () => {
   };
 
   return (
-    <div>
-      <SearchForm calculateRoute={calculateRoute} />
-    </div>
+    <>
+      <SearchForm isSearhResult="false" />
+    </>
   );
 };
 
