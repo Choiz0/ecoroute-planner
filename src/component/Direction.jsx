@@ -87,7 +87,7 @@ function Direction() {
         <ResultCard destination={destination} origin={origin} />
       </div>
       <div className="h-1/3 rounded-lg bg-gray-200 lg:col-span-2 mx-2">
-        <div className="container h-full  mx-auto  ">
+        <div className="md:container md:h-full  mx-auto max-w-96 h-96 ">
           <GoogleMap
             key={mapKey}
             center={center}

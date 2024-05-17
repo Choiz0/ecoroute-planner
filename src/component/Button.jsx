@@ -1,17 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+const Button = ({
+  children,
+  className = "",
+  backgroundColor = "bg-teal-600",
+  textColor = "text-darkg",
+  borderColor = "border-teal-600",
+  lastBgColor = "bg-white",
 
-const Button = ({ children, className, ...props }) => {
+  ...props
+}) => {
   return (
-    <button
-      className={`group relative inline-block text-sm font-medium text-indigo-600 focus:outline-none focus:ring active:text-indigo-500 ${className}`}
+    <a
+      className={`group cursor-pointer bg-slate-500 text-center relative inline-block text-sm font-medium focus:outline-none focus:ring active:${textColor.replace(
+        "text-",
+        ""
+      )} ${className}`}
       {...props}
     >
-      <span className="absolute inset-0 translate-x-0.5 translate-y-0.5 bg-indigo-600 transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></span>
-      <span className="relative block border border-current bg-white px-8 py-3 text-center">
+      <span
+        className={`absolute inset-0 translate-x-0.5 translate-y-0.5 ${backgroundColor} transition-transform group-hover:translate-x-0 group-hover:translate-y-0`}
+      ></span>
+      <span
+        className={`relative block border ${borderColor} ${textColor} px-8 py-3 ${lastBgColor}`}
+      >
         {children}
       </span>
-    </button>
+    </a>
   );
 };
 

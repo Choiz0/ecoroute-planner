@@ -45,21 +45,13 @@ const SearchForm = ({ isSearhResult, destination, origin }) => {
   return (
     <>
       <div
-        className={`mx-auto  px-4 sm:px-6 ${
-          isSearhResult ? "w-full" : " py-16 lg:px-8 max-w-screen-xl"
+        className={`mx-auto  px-4 sm:px-6   ${
+          isSearhResult ? "w-full" : " py-4 lg:px-8 max-w-screen-xl"
         }`}
       >
-        <div className="mx-auto max-w-lg">
-          <h1
-            className={`text-center text-2xl font-bold text-indigo-600 sm:text-3xl ${
-              isSearhResult ? "hidden" : "block"
-            }`}
-          >
-            Search your Eco-Friendly directions
-          </h1>
-
+        <div className="mx-auto max-w-lg ">
           <form
-            className={`mb-0  space-y-4 rounded-lg  sm:p-6  flex flex-col w-full ${
+            className={`mb-0  bg-white space-y-4 rounded-lg  sm:p-6  flex flex-col w-full ${
               isSearhResult ? "w-full" : "lg:p-8  p-4 shadow-lg mt-6"
             }`}
           >
@@ -84,10 +76,15 @@ const SearchForm = ({ isSearhResult, destination, origin }) => {
               />
             </Autocomplete>
 
-            <Button className="" onClick={handleSearch}>
+            <Button
+              onClick={handleSearch}
+              backgroundColor="bg-mybrown"
+              borderColor="border-mybrown"
+              type="button"
+            >
               Search Route
             </Button>
-            <Button className=" " onClick={clearRoute}>
+            <Button onClick={clearRoute} type="button">
               Clear Route{" "}
             </Button>
           </form>
